@@ -1,4 +1,6 @@
-#!/Users/nate/tools/groovy/bin/groovy
+#!/usr/bin/env groovy -w
+
+
 def fos= new FileOutputStream('TestFile.txt')
 
 //These methods are available for all output streams, not just FileOutputStream:
