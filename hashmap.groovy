@@ -10,16 +10,33 @@ two = [name:'Wilma']
 myList << two
 
 myList.each { thing ->
-  println thing.name
-println thing['name']
-}
-def epList = []
-        def email = [from:'Fred',
-                     subject:'Eat',
-                     date:'Yo']
-        epList << email
+    println thing.name
+	println thing['name']
 
-        email = [from:'Barney',
-                subject:'Drink',
-                date:'ViP']
-        epList << email
+}
+
+
+def epList = []
+
+def email = [
+    from:'Fred',
+    subject:'Eat',
+    date:'Yo'
+]
+
+epList << email
+
+email = [
+    from:'Barney',
+    subject:'Drink',
+    date:''
+]
+
+epList << email
+
+
+// When two args are defined, they're key/value
+
+epList.each { key, value ->
+    println "${key}, ${value}"
+}
