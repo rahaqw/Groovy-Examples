@@ -252,8 +252,8 @@
   <component name="libraryTable">
     <library name="Groovy">
       <CLASSES>
-        <root url="file:///Users/nate/tools/groovy/lib" />
-        <root url="file:///Users/nate/tools/groovy/lib" />
+        <root url="file:///Users/nate/tools/groovy-1.0/lib" />
+        <root url="file:///Users/nate/tools/groovy-1.0/lib" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
