@@ -14,6 +14,7 @@ println lst.find { it == 2 }
 
 def plist = []
 
+
 def person = new Person(name:'Bert', address:'101')
 assert person.name == 'Bert'
 plist << person

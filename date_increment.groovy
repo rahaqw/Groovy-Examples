@@ -2,7 +2,7 @@
 d = new Date() + 1
 late_time = new Date(d.getTime() + 1000 * 60 * 60 * 24)
 
-println late_time
+oprintln late_time
 
 println d
 // Groovy flakes out if you try to construct with a decimal
