@@ -8,7 +8,7 @@ procSed.waitFor()
 print procSed.text
 println "This is GREP running .............."
 
-procEcho = 'cat ./pipe2.groovy'.execute()
+procEcho = 'echo Nate'.execute()
 def procGrep = 'grep Nate'.execute()
 procEcho | procGrep
 
