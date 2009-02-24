@@ -18,3 +18,9 @@ proc.waitFor()
 
     println "Output was: ${proc.in.text}"
 
+
+// Create temp file in current directory
+def currentDir = System.getProperty('user.dir')
+def tempFile = File.createTempFile('notification', '.xml', new File(currentDir))
+println tempFile.path
+
