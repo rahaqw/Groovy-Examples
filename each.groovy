@@ -15,3 +15,11 @@ println "Num times is ${numTimes}"
 (1 .. numTimes).each {
     println "Whee ${it}"
 }
+
+def ten = []
+(1..10).each {ten.add(it)}
+println ten
+
+// Doesn't work
+// def eleven = [ 1 .. 11 ]
+// prnitln eleven
