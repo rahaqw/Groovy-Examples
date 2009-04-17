@@ -4,3 +4,6 @@
     println "Goop"
     println "Hello"
 }
+
+def foo = []
+println foo[-1]
