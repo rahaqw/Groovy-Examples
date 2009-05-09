@@ -34,3 +34,12 @@ assert m[0][0] == "foobar"
 m = "2.8GB" =~ /^([0-9.]+)/
 assert m.getCount() == 1
 assert m[0][0] == "2.8"
+
+// Name parsing
+// at least in a simple match/fetch scenario.
+def fullName = "Bart Simpson"
+m = fullName =~ /(\w+)/
+assert m.getCount() == 2
+assert m[0][0] == "Bart"
+assert m[1][0] == "Simpson"
+
