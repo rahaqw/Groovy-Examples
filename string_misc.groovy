@@ -16,3 +16,7 @@ m = fullName =~ /(\w+)/
 assert m.getCount() == 2
 assert m[0][0] == "Bart"
 assert m[1][0] == "Simpson"
+
+
+def str = " foo "
+assert str.trim() == "foo"
