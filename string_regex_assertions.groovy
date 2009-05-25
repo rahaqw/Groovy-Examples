@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 // The matcher.matches() only is true unless the ENTIRE string
 // matches the regex.  LAME!
 
@@ -43,3 +45,8 @@ assert m.getCount() == 2
 assert m[0][0] == "Bart"
 assert m[1][0] == "Simpson"
 
+numberArray = '[123, 4, 56, 432, 990000, 0.5]'
+def numberMatcher = numberArray =~ /([\d\.]+)/
+assert numberMatcher.getCount() == 6
+assert numberMatcher[0][0] == "123"
+assert numberMatcher[1][0] == "4"
