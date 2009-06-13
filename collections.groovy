@@ -31,6 +31,9 @@ plist.each { println it.address }
 println "Here's the first person's address that matches 101"
 println plist.find { it.address == '101' }.name
 
+println "Here's all the people who's addresses are NOT Kitchen"
+println plist.findAll { it.address != 'Kitchen' }.name
+
 println "Here's all the people's addresses that match 101"
 // nobody is a list, one-for-one that matches or doesn't match the 
 // address we're looking for.  In other words, it returns a list of
