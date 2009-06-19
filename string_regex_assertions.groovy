@@ -50,3 +50,11 @@ def numberMatcher = numberArray =~ /([\d\.]+)/
 assert numberMatcher.getCount() == 6
 assert numberMatcher[0][0] == "123"
 assert numberMatcher[1][0] == "4"
+
+
+// Test OR assertions
+assert !("showBooboo" ==~ /show|edit|update/)
+assert ("show" ==~ /show|edit|update/)
+assert ("showBooboo" =~ /show/)
+assert !("showBooboo" ==~ /show/)
+
