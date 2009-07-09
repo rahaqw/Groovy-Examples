@@ -24,19 +24,22 @@ def email = [
     date:'Yo'
 ]
 
-epList << email
-
 email = [
     from:'Barney',
     subject:'Drink',
     date:''
 ]
 
-epList << email
-
-
 // When two args are defined, they're key/value
-
-epList.each { key, value ->
+email.each { key, value ->
     println "${key}, ${value}"
 }
+
+
+def myparams = [
+    assertYourMom : true,
+    somethingElse : false
+    ]
+
+assert false == myparams.remove('somethingElse')
+assert true == myparams.remove('assertYourMom')
