@@ -68,3 +68,9 @@ assert (!("dooBarBaz" =~ /^(foo|bar)/))
 // assert (testString =~ /^(?!foo|bar|baz)\w+$/)
 // 
 // assert (testString =~ /(?!foo)\w+$/)
+//
+
+def expectedURL = '/someController/someAction'
+def actualURL = '/someController/someAction?someParam=someValue&someOtherParm=someOtherValue'
+
+assert (expectedURL =~ /^\/someController\//)
