@@ -20,3 +20,11 @@ assert m[1][0] == "Simpson"
 
 def str = " foo "
 assert str.trim() == "foo"
+
+str = "ThereShXouldNotBeAnX"
+// This removes the first "X".
+// def strChopped = str - str[-1]
+def strChopped = str[0..-2]
+println strChopped
+assert strChopped == "ThereShXouldNotBeAn"
+
