@@ -43,3 +43,4 @@ def myparams = [
 
 assert false == myparams.remove('somethingElse')
 assert true == myparams.remove('assertYourMom')
+assert myparams['assertYourMom'] == null
