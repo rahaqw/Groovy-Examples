@@ -1,5 +1,12 @@
 #!/usr/bin/env groovy -w
 
+def f1= new File('TestFile.txt')
+
+def data = []
+// Weed out junk we don't want, and split by commas
+f1.eachLine{ 
+    def lineArray = it.split("\\t") as List
+}
 
 def fos= new FileOutputStream('TestFile.txt')
 
@@ -54,3 +61,5 @@ try{ fis.read(); assert 0 }catch(e){ assert e instanceof IOException }
 
 
 new File('TestFile.txt').delete() // delete the file used by this example
+
+
