@@ -9,6 +9,14 @@ testString = "bar"
 assert (testString =~ /(foo|bar)/)
 
 
+// Use variables as regexes
+// You must interpolate, to tell Groovy you're not
+// searching for literal 'regex'
+def regex = '(foo|bar)'
+assert ('foo' =~ /${regex}/)
+assert ('fool' =~ /${regex}/)
+assert (!('puke' =~ /${regex}/))
+
 // This won't match, because baz is not in foo or bar
 testString = "baz"
 assert (!(testString =~ /(foo|bar)/))
@@ -74,3 +82,9 @@ def expectedURL = '/someController/someAction'
 def actualURL = '/someController/someAction?someParam=someValue&someOtherParm=someOtherValue'
 
 assert (expectedURL =~ /^\/someController\//)
+
+
+// Count occurrences of foo in string
+def foo = "something\tcolumn1\tcolumn2\tcolumn3"
+assert (foo =~ /\t/).count == 3
+
