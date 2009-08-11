@@ -16,4 +16,4 @@ sleep(3000)
 def endDate = new Date()
 
 difference = endDate.getTime() - startDate.getTime() 
-print "Difference between start and end is: " + (difference / 1000).toLong()
+print "Difference between start and end is: " + (difference / 1000).toLong() + " seconds."
