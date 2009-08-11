@@ -1,4 +1,9 @@
 #!/usr/bin/env groovy
+//we can create a calendar with the default time zone...
+def tz = cal.getTimeZone()
+
+println cal.get(Calendar.ZONE_OFFSET)
+println cal.get(Calendar.DST_OFFSET) 
 
 //----------------------------------------------------------------------------------
 // use Date to get the current time
@@ -71,7 +76,7 @@ long before = time - difference
 // any field of a calendar is incrementable via add() and roll() methods
 cal = Calendar.instance
 df = new SimpleDateFormat()
-printCal = {cal -> df.format(cal.time)}
+printCal = {calen -> df.format(calen.time)}
 cal.set(2000, 0, 1, 00, 01, 0)
 println('printCal(cal) is: ' + printCal(cal))
 // assert printCal(cal) == '1/01/00 12:01 AM'
