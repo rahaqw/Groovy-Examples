@@ -11,7 +11,7 @@ def string = "1"
 println string.padLeft(5, "0")
 
 
-(90000 .. 99999).each {
+(0 .. 100).each {
     println it.toString().padLeft(5, "0")
 }
 
