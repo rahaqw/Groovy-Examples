@@ -13,6 +13,13 @@ h2 {
     padding:0px;
 }
 
+.sudokuChanged {
+    background-color:#F9F9F9;
+    border:1px solid #AAAAAA;
+    font-size:95%;
+    padding:0px;
+    color: red;
+}
 /* When h2 occurs in .smallsomething class */
 .smallsomething h2  {
     color:#fb8000; 

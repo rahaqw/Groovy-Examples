@@ -102,7 +102,7 @@ def eliminateNumsByColumn(board, colNum) {
     return board
     
 }
-def eliminateNumsBySquare(board, rootRow, rootCol) {
+def eliminateNumsBySquare(board, rootRow, rootCol, print = false) {
     def invalidNums = []
     // TODO Find groovier way to collect all values
     // of each square, meow
@@ -117,8 +117,10 @@ def eliminateNumsBySquare(board, rootRow, rootCol) {
     rootRow.upto(rootRow + 2) { row ->
         rootCol.upto(rootCol + 2) { col ->
             def square = board[row][col]
-            // println "removing" + invalidNums + " from " + square.possibleNums
+            if (print) println "removing" + invalidNums + " from " + square.possibleNums
             square.possibleNums = square.possibleNums.minus(invalidNums)
+            if (print) println "possible nums for " + row + "," + col + " are now: " + square.possibleNums
+            if (print) println "square is: " + square.val
         }
     }
     return board
@@ -130,20 +132,26 @@ def evaluateBoard(board) {
     0.upto(8) { row ->
         0.upto(8) { col ->
             def square = board[row][col]
+            // println "Evaluating " + row + ", " + col
+            // println square.possibleNums
+            // println square.possibleNums.size()
             if (square.possibleNums.size() == 1) {
                 if (square.val == "-") {
                     square.val = square.possibleNums[0]
+                    printBoardHtml(board, row, col)
+                    // println "progress = true"
                     progress = true
                 }
             }
         }
-        }
+    }
 
     return progress
 }
 
 
 def findUniqueInSquare(board, rootRow, rootCol) {
+    
 
     def allPossibleVals = []
     def rowSquares = []
@@ -173,7 +181,7 @@ def findUniqueInSquare(board, rootRow, rootCol) {
                 }
             }
             // println "setting value to " + matches[0]
-            square.val = matches[0]
+            // square.val = matches[0]
             square.possibleNums = [matches[0]]
             // println "Jar"
         }
@@ -223,12 +231,17 @@ def findUniqueInRow(board, rowNum) {
     }
 }
 
-def printBoardHtml(board) {
+def printBoardHtml(board, changedRow, changedCol) {
     println '<table class="sudoku">'
     0.upto(8) { row ->
     println "<tr>"
         0.upto(8) { col ->
-            println "<td class='sudoku'>"
+            if (row == changedRow && col == changedCol) {
+                println "<td class='sudokuChanged'>"
+            }
+            else {
+                println "<td class='sudoku'>"
+            }
             if (board[row][col].val == "-") {
                 println board[row][col].possibleNums.join(',')
             }
@@ -250,6 +263,7 @@ def printBoard(board) {
     }
     println ""
 }
+
 def findUniqueInColumn(board, colNum) {
 
     def allPossibleVals = []
@@ -280,7 +294,7 @@ def findUniqueInColumn(board, colNum) {
                 }
             }
             // println "setting value to " + matches[0]
-            square.val = matches[0]
+            // square.val = matches[0]
             square.possibleNums = [matches[0]]
         }
     }
@@ -344,7 +358,7 @@ while (progress) {
     attemptSolve(board)
     progress = evaluateBoard(board)
     if (opt.H) {
-        printBoardHtml(board)
+        // printBoardHtml(board, -1, -1)
     }
     else {
         printBoard(board)
