@@ -96,8 +96,11 @@ def eliminateNumsByColumn(board, colNum) {
     // TODO Find groovier way to do this
     0.upto(8) { row ->
         def square = board[row][colNum]
-        // println "removing" + invalidNums + " from " + square.possibleNums
+        def prev = square.possibleNums.clone()
         square.possibleNums = square.possibleNums.minus(invalidNums)
+        if (prev != square.possibleNums) {
+            printBoardHtml(board, row, colNum)
+        }
     }
     return board
     
@@ -236,6 +239,7 @@ def printBoardHtml(board, changedRow, changedCol) {
     0.upto(8) { row ->
     println "<tr>"
         0.upto(8) { col ->
+            def square = board[row][col]
             if (row == changedRow && col == changedCol) {
                 println "<td class='sudokuChanged'>"
             }
@@ -305,22 +309,32 @@ def attemptSolve(board) {
     0.upto(8) {
         board = eliminateNumsByRow(board, it)
     }
-    // println "oba" + board[0][0]
+    printBoardHtml(board, -1, -1)
 
     0.upto(8) {
         board = eliminateNumsByColumn(board, it)
     }
-    // println "oba" + board[0][0]
+    printBoardHtml(board, -1, -1)
 
     board = eliminateNumsBySquare(board, 0, 0)
+    printBoardHtml(board, -1, -1)
+    
     board = eliminateNumsBySquare(board, 0, 3)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 0, 6)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 3, 0)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 3, 3)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 3, 6)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 6, 0)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 6, 3)
+    printBoardHtml(board, -1, -1)
     board = eliminateNumsBySquare(board, 6, 6)
+    printBoardHtml(board, -1, -1)
 
 
     // println "oba" + board[0][0]
