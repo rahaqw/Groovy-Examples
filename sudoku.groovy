@@ -6,6 +6,8 @@
  * Purpose:
  *  Author: Crazy Nate
  * History: 
+ *    TODO: Equal spacing for html printout
+ *          Shade alternating squares differently in HTML printout
  */
 
 // Parse command line arguments
@@ -14,6 +16,7 @@ def cli = new CliBuilder(usage: 'groovy sudoku.groovy [-h|--help] [ -t "times" ]
 
 cli.h(argName:'help', longOpt:'help', 'show usage information and quit')
 cli.f(argName:'file', longOpt:'file', args:1, required:true, 'File name')
+cli.H(argName:'html', longOpt:'html', args:0, required:false, 'Output in HTML')
 
 // To actually parse the command line options, use the following command.
 def opt = cli.parse(args)
@@ -149,12 +152,12 @@ def findUniqueInSquare(board, rootRow, rootCol) {
     rootRow.upto(rootRow + 2) { row ->
             rootCol.upto(rootCol + 2) { col ->
                 def square = board[row][col]
-                println square.possibleNums
+                // println square.possibleNums
                 squareSquares << square
                 allPossibleVals = allPossibleVals + square.possibleNums
             }
         }
-        println allPossibleVals
+        // println allPossibleVals
 
     ["1", "2", "3", "4", "5",
      "6", "7", "8", "9"].each { meow ->
@@ -172,7 +175,7 @@ def findUniqueInSquare(board, rootRow, rootCol) {
             // println "setting value to " + matches[0]
             square.val = matches[0]
             square.possibleNums = [matches[0]]
-            println "Jar"
+            // println "Jar"
         }
     }
 }
@@ -221,13 +224,11 @@ def findUniqueInRow(board, rowNum) {
 }
 
 def printBoardHtml(board) {
-    println "<html>"
-    println "<body>"
-    println "<table>"
+    println '<table class="sudoku">'
     0.upto(8) { row ->
     println "<tr>"
         0.upto(8) { col ->
-            println "<td>"
+            println "<td class='sudoku'>"
             if (board[row][col].val == "-") {
                 println board[row][col].possibleNums.join(',')
             }
@@ -239,15 +240,15 @@ def printBoardHtml(board) {
         println "</tr>"
     }
     println "</table>"
-    println "</body>"
-    println "</html>"
 }
 def printBoard(board) {
     0.upto(8) { row ->
         0.upto(8) { col ->
-            println board[row][col].val
+            print board[row][col].val
         }
+        println ""
     }
+    println ""
 }
 def findUniqueInColumn(board, colNum) {
 
@@ -329,11 +330,28 @@ def attemptSolve(board) {
 }
 
 def progress = true
+if (opt.H) {
+    print "<html>"
+    print "<head>"
+    print '<link rel="Stylesheet" type="text/css" href="style.css" />'
+    print "</head>"
+    print "<body>"
+}
+else {
+    printBoard(board)
+}
 while (progress) {
     attemptSolve(board)
     progress = evaluateBoard(board)
-    printBoard(board)
-    println board[6][1].possibleNums
-    println board[7][1].possibleNums
+    if (opt.H) {
+        printBoardHtml(board)
+    }
+    else {
+        printBoard(board)
+    }
+}
+if (opt.H) {
+    print "</body"
+    print "</html>"
 }
 print "done"
