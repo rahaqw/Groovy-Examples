@@ -48,3 +48,26 @@ assert strSudo.getSquare(0,0).val == "-"
 assert strSudo.getSquare(8,0).val == "5"
 assert strSudo.getSquare(8,4).val == "9"
 assert strSudo.getSquare(8,8).val == "-"
+
+
+def row = [
+            [ val:'1', possibleNums:[]],
+            [ val:'2', possibleNums:[]],
+            [ val:'-', possibleNums:['1', '2', '3', '4', '5']]]
+
+strSudo.tidyPossibleNums(row)
+assert row[2].possibleNums == ['3', '4', '5']
+
+row = [
+            [ val:'1', possibleNums:[]],
+            [ val:'2', possibleNums:[]],
+            [ val:'-', possibleNums:['1', '2', '3', '4', '5']],
+            [ val:'-', possibleNums:['1', '2', '3', '4', '5']],
+            [ val:'-', possibleNums:['1', '2', '3', '4', '5']],
+            [ val:'-', possibleNums:['1', '2', '6', '3', '4', '5']],
+            [ val:'-', possibleNums:['1', '2', '3', '7', '4', '5']]
+]
+
+strSudo.tidyUniquePossibles(row)
+assert row[-2].possibleNums == ['6']
+assert row[-1].possibleNums == ['7']
