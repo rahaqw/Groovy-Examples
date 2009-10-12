@@ -1,9 +1,5 @@
 #!/usr/bin/env groovy
 class ClosureDemo {
-    public def someMethod(Closure closure) {
-            
-        closure('one', 'two')
-    }
     static void main(String[] a) {
         def counter = 0
 
@@ -24,11 +20,16 @@ class ClosureDemo {
         num.times(myclosure)
         println counter
 
-        someMethod( { one, two ->
-            println "one is: ${one}, two is ${two}"
-        })
+        def o = new ClosureDemo()
+        o.someMethod() { one, two ->
+            println "One is : ${one}"
+            println "Two is : ${two}"
+        }
 
     }
 
+    public someMethod(Closure closure) {
+        closure('I want to print', 'This argument')
+    }
 }
 
