@@ -1,89 +1,68 @@
-h1 {
-    font-size:2.0em;
+body {
+    margin:0;
+}
+body, td, .plain {
+    color:#222222;
+    font-family:arial,sans-serif;
+    font-size:9pt;
+}
+.tm {
+    margin-bottom:0;
+    margin-top:8pt;
+}
+table, td {
+    padding:6;
+    width: 50px;
+}
+.stat {
+    color:#990000;
+    font-size:10pt;
+    font-weight:bold;
+}
+.reset {
+    color:#990000;
+    font-size:8pt;
+}
+input.reset {
+    background-color:transparent;
+    border:1px solid;
+    padding:0;
+}
+a:link, a:active, a:visited {
+    color:#3333FF;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+.c0 {
+    font-family:times,serif;
+    font-size:24pt;
+    height:25pt;
+    text-align:center;
+    vertical-align:middle;
+    width:24pt;
 }
 
-h2 { 
-    font-size:3.0em;
+.t {
+    background-color:#FFFFFF;
+    border:2px solid #666699;
+    border-collapse:collapse;
 }
 
-.sudoku {
-    background-color:#F9F9F9;
-    border:1px solid #AAAAAA;
-    font-size:95%;
-    padding:0px;
+.c0, .e0, .f0, .g0 {
+    border:1px solid #DDDDEE;
+}
+.col2, .col5{
+    border-right:2px solid #666699;
+}
+.row3, .row6 {
+    border-top:2px solid #666699;
 }
 
-.sudokuChanged {
-    background-color:#F9F9F9;
-    border:1px solid #AAAAAA;
-    font-size:95%;
-    padding:0px;
-    color: red;
+.possible {
+    vertical-align:top;
+    font-size:6pt;
+    font-color:blue;
+    margin-top:0;
 }
-/* When h2 occurs in .smallsomething class */
-.smallsomething h2  {
-    color:#fb8000; 
-    font-size:4.0em;
-}
-
-.smallsomething .halloween h2 {
-    color:#fb8000; 
-    font-size:4.0em;
-    background-color: #000000;
- }
-
-
-.custom .Special { color: #fb8000; }
-.custom .Statement { color: #ffff60; }
-.custom .Constant { color: #ffa0a0; }
-.custom .PreProc { color: #ff80ff; }
-.custom pre { font-family: monospace; font-weight: normal; color: #ffffff; background-color: #000000; }
-.custom body { font-family: monospace; color: #ffffff; background-color: #000000; }
-
-/*
-	custom.css  custom styles for any WordPress theme that YOU define
-	------------------------------------------------------------------
-	
-	This stylesheet will allow you to futureproof your CSS changes
-	against future releases and upgrades on ANY WordPress theme. I 
-	know you work hard on your modified styles, and I don't want you 
-	to feel like every theme upgrade is a total drag!
-	
-	Also, if you're a designer who makes use of GPL themes in your
-	work, you'll find this incredibly handy! You can come up with a
-	set of core modifications for any WordPress theme, and by
-	isolating these mods in a separate stylesheet, you'll be better
-	able to track the changes that you make and their associated
-	effects. Best of all, when the theme's designer releases a new
-	version, you won't have to go back through and make all your
-	changes anew. Plus, this is *definitely* the smartest way to scale
-	out sites if you find yourself using one or two theme frameworks
-	consistently.
-	
-	Instructions:
-	
-	Modifying existing theme styles to your liking is a breeze with
-	this handy stylesheet. In order to turn on the CSS styles that you
-	define here, you'll need to append the <body> tag (usually found
-	within the header.php file) with a CSS class called "custom".
-	Thanks to this, you now have the ability to override ANY style
-	that's declared in the theme's original stylesheet.
-	
-	In practice, you simply need to copy the CSS for the element that
-	you want to change (from style.css) and then paste it here. Prefix
-	the new CSS declaration with .custom, and then make your tweaks as
-	necessary.
-	
-	Here's an example:
-	
-	To change the default color of the <a> tag (let's say you want to 
-	make them a cherry red [#c00]) and to remove the default
-	underline, this is what you would do:
-	
-	.custom a { color: #c00; text-decoration: none; }
-	
-	Oh, but remember, none of these changes will work unless you call
-	custom.css from wihtin your header file!
-	
-	Cool? Now get to hackin!
-*/

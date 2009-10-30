@@ -141,6 +141,7 @@ def evaluateBoard(board) {
             if (square.possibleNums.size() == 1) {
                 if (square.val == "-") {
                     square.val = square.possibleNums[0]
+                    square.possibleNums = []
                     printBoardHtml(board, row, col)
                     // println "progress = true"
                     progress = true
@@ -212,9 +213,9 @@ def findUniqueInRow(board, rowNum) {
     // println allPossibleVals
 
     ["1", "2", "3", "4", "5",
-     "6", "7", "8", "9"].each { meow ->
-        def matches = allPossibleVals.findAll { foo ->
-            foo == meow
+     "6", "7", "8", "9"].each { possibleUnique ->
+        def matches = allPossibleVals.findAll { it ->
+            it == possibleUnique
         }
         // println matches
         if (matches.size() == 1) {
@@ -222,34 +223,48 @@ def findUniqueInRow(board, rowNum) {
             //
             // println "found something"
             // println "rowSquares is: " + rowSquares
-            def square = rowSquares.find { den ->
-                den.possibleNums.find { foo ->
-                    foo == matches[0]
+            def square = rowSquares.find { rowSquare ->
+                rowSquare.possibleNums.find { possibleNum ->
+                    possibleNum == matches[0]
                 }
             }
-            // println "setting value to " + matches[0]
-            square.val = matches[0]
-            square.possibleNums = [matches[0]]
+            if (square == null) {
+                println rowSquares
+                println "BOOM!" + allPossibleVals
+                println "setting value to " + matches[0]
+            }
+            else {
+                square.val = matches[0]
+                square.possibleNums = [matches[0]]
+            }
         }
     }
 }
 
 def printBoardHtml(board, changedRow, changedCol) {
-    println '<table class="sudoku">'
+    println '<table class="t">'
+
     0.upto(8) { row ->
     println "<tr>"
         0.upto(8) { col ->
             def square = board[row][col]
-            if (row == changedRow && col == changedCol) {
-                println "<td class='sudokuChanged'>"
-            }
-            else {
-                println "<td class='sudoku'>"
-            }
+            // if (row == changedRow && col == changedCol) {
+            //     println "<td class='c0'>"
+            // }
+            // else {
+            //     println "<td class='c0 row${row} col${col}'>"
+            // }
+            // TODO: Find out why I have to put the 'possible'
+            // CSS class Before the c0 class.  Also, find out why
+            // I can't create a <span class="possible"> to wrap the value
+            // instead of having two println <td> statements that aren't much
+            // different
             if (board[row][col].val == "-") {
-                println board[row][col].possibleNums.join(',')
+                println "<td class='possible c0 row${row} col${col}'>"
+                println board[row][col].possibleNums.join('')
             }
             else {
+                println "<td class='c0 row${row} col${col}'>"
                 println board[row][col].val
             }
             println "</td>"
@@ -257,6 +272,7 @@ def printBoardHtml(board, changedRow, changedCol) {
         println "</tr>"
     }
     println "</table>"
+    println "<hr />"
 }
 def printBoard(board) {
     0.upto(8) { row ->
@@ -372,7 +388,7 @@ while (progress) {
     attemptSolve(board)
     progress = evaluateBoard(board)
     if (opt.H) {
-        // printBoardHtml(board, -1, -1)
+        printBoardHtml(board, -1, -1)
     }
     else {
         printBoard(board)
