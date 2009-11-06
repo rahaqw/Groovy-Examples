@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 //we can create a calendar with the default time zone...
+cal = Calendar.instance
 def tz = cal.getTimeZone()
 
 println cal.get(Calendar.ZONE_OFFSET)
@@ -10,7 +11,6 @@ println cal.get(Calendar.DST_OFFSET)
 println new Date()
 // => Mon Jan 01 07:12:32 EST 2007
 // use Calendar to compute year, month, day, hour, minute, and second values
-cal = Calendar.instance
 println 'Today is day ' + cal.get(Calendar.DAY_OF_YEAR) + ' of the current year.'
 // => Today is day 1 of the current year.
 // there are other Java Date/Time packages with extended capabilities, e.g.:
