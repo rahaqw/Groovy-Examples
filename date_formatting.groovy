@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy -w
+#!/usr/bin/env groovy
 
 c= new GregorianCalendar(2009, Calendar.JULY, 22, 16, 20, 21)
     //creates 22 July 2009 at 4:20:21pm GMT
