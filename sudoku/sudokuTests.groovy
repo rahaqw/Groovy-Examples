@@ -71,3 +71,33 @@ row = [
 strSudo.tidyUniquePossibles(row)
 assert row[-2].possibleNums == ['6']
 assert row[-1].possibleNums == ['7']
+
+// Test data from ../sudokuExcludeFromOtherRegions.html
+def region = [
+            [ val:'9', possibleNums:[]],
+            [ name:'buddy', val:'-', possibleNums:['3', '5', '8']],
+            [ val:'-', possibleNums:['3', '6']],
+            [ val:'1', possibleNums:[]],
+            [ name:'holly', val:'-', possibleNums:['2', '3', '5', '8']],
+            [ val:'-', possibleNums:['2', '3']],
+            [ val:'4', possibleNums:[]],
+            [ val:'7', possibleNums:[]],
+            [ val:'-', possibleNums:['2', '3', '6']]
+]
+
+def results = strSudo.findExclusivePossibles(region)
+println results
+
+// The two is available in three of the squares
+assert results[0].possibleNum == "2"
+assert results[0].squares.size == 3
+// The five is available in only two squares
+assert results[1].possibleNum == "5"
+assert results[1].squares.size == 2
+// The six is available in only two squares
+assert results[2].possibleNum == "6"
+assert results[2].squares.size == 2
+// The eight is available in only two squares
+assert results[3].possibleNum == "8"
+assert results[3].squares.size == 2
+
