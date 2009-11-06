@@ -252,7 +252,7 @@ def printBoardHtml(board, changedRow, changedCol) {
             //     println "<td class='c0'>"
             // }
             // else {
-            //     println "<td class='c0 row${row} col${col}'>"
+            // println "<td class='c0 row${row} col${col}'>"
             // }
             // TODO: Find out why I have to put the 'possible'
             // CSS class Before the c0 class.  Also, find out why
@@ -260,8 +260,8 @@ def printBoardHtml(board, changedRow, changedCol) {
             // instead of having two println <td> statements that aren't much
             // different
             if (board[row][col].val == "-") {
-                println "<td class='possible c0 row${row} col${col}'>"
-                println board[row][col].possibleNums.join('')
+                println "<td class='c0 possible row${row} col${col}'>" +
+                        board[row][col].possibleNums.join('')
             }
             else {
                 println "<td class='c0 row${row} col${col}'>"
