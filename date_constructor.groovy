@@ -9,8 +9,15 @@ assert days == 3071
 
 
 // Construct a date that's 10 years ago to the day
-def tenYearsAgo = Calendar.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR) - 10)
-println tenYearsAgo
+// This crap doesn't work -- gives some stupid integer compile error or something.
+// Who cares -- use the example below -- much simpler
+// def tenYearsAgo = Calendar.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR) - 10)
+// println tenYearsAgo
 
-def tenYearsAgoDate = new Date(tenYearsAgo)
-println tenYearsAgoDate
+// def tenYearsAgoDate = new Date(tenYearsAgo)
+// println tenYearsAgoDate
+
+
+def myFormat = 'MM/dd/yyyy'
+def myDate = Date.parse(myFormat, '11/12/2009')
+println "my date is: ${myDate}"
