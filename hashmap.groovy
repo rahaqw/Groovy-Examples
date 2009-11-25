@@ -75,3 +75,9 @@ def myparams = [
 assert false == myparams.remove('somethingElse')
 assert true == myparams.remove('assertYourMom')
 assert myparams['assertYourMom'] == null
+
+
+// Example of hash delete method
+def someMap = [ foo:'bar', baz:'quk' ]
+def something = someMap.remove('baz')
+assert something == 'quk'
