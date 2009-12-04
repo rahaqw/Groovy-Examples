@@ -11,6 +11,9 @@ class Person {
 lst = [ 1 .. 4, 2 ]
 // Result is 2.  find gets you the first occurrence
 println lst.find { it == 2 }
+assert lst.find { it == 2 } != null
+assert lst.find { it == 2 } == 2
+assert lst.find { it == 7 } == null
 
 def plist = []
 
