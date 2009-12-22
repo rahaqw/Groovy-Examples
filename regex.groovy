@@ -88,3 +88,7 @@ assert (expectedURL =~ /^\/someController\//)
 def foo = "something\tcolumn1\tcolumn2\tcolumn3"
 assert (foo =~ /\t/).count == 3
 
+// Require that password contains at least three digits
+def samplePass = "1abc2def3ghi"
+assert (samplePass =~ /\d/).count >= 4
+
