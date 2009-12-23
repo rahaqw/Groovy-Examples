@@ -90,5 +90,8 @@ assert (foo =~ /\t/).count == 3
 
 // Require that password contains at least three digits
 def samplePass = "1abc2def3ghi"
-assert (samplePass =~ /\d/).count >= 4
+assert (samplePass =~ /\d/).count >= 3
 
+// Case IN sensitive
+def app = "foo man rock Star wanted for lame job"
+assert (app =~ /(?i)rock.*star/)
