@@ -1,7 +1,11 @@
 #!/usr/bin/env groovy
-# THIS DOESN"T WORK
 def list = ['foo', 'bar', 'baz', 'quk']
 
-list.max(3).each {
-    println it
-}
+// max and min return the last/first
+// item in a list when the list is sorted
+assert list.max() == 'quk'
+assert list.min() == 'bar'
+
+def newlist = list.sort()
+assert newlist[0] == list.min()
+assert newlist[-1] == list.max()
