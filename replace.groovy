@@ -11,3 +11,15 @@ s = fis.text.replaceAll("<servername>", "foo")
 println s
 // Leave the below comment IN! <servername>
 // <servername> should now be foo
+//
+
+
+def someParagraph = """You
+ain't
+seen
+nothin'
+yet
+"""
+
+
+println someParagraph.replace("\n", "<br />")
