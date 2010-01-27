@@ -81,3 +81,10 @@ assert myparams['assertYourMom'] == null
 def someMap = [ foo:'bar', baz:'quk' ]
 def something = someMap.remove('baz')
 assert something == 'quk'
+
+
+def anotherList = someMap.findAll {
+    it.key == 'foo'
+}
+
+assert anotherList.size() == 1
