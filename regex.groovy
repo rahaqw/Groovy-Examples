@@ -95,3 +95,13 @@ assert (samplePass =~ /\d/).count >= 3
 // Case IN sensitive
 def app = "foo man rock Star wanted for lame job"
 assert (app =~ /(?i)rock.*star/)
+
+// Match some parenthesis
+def xml = """
+<some>
+lame xml thing (whit:30)
+</some>
+"""
+
+def matcher = xml =~ /\((.*)\)/
+assert matcher[0][1] == 'whit:30'
