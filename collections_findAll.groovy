@@ -11,3 +11,11 @@ def missingFields = fields.findAll { person[it] == null }
 
 println missingFields.join(',')
 
+def myList = [ '', 'this', 'is', 'a', 'Test' ]
+
+def newList = myList.findAll({ it.length()})
+assert newList[0] == 'this'
+assert newList[1] == 'is'
+assert newList[2] == 'a'
+assert newList[3] == 'Test'
+
