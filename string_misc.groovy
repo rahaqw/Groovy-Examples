@@ -28,3 +28,8 @@ def strChopped = str[0..-2]
 println strChopped
 assert strChopped == "ThereShXouldNotBeAn"
 
+// Trim string
+
+
+def s = '   boin  '
+assert s.trim() == 'boin'

@@ -14,9 +14,31 @@ def all = [
 
 // Sort by the 2nd element in all the arrays
 def allSorted = all.sort { a, b -> a[1].toString() <=> b[1].toString() }
-println allSorted
 
 assert allSorted[0][1] == 2
 assert allSorted[1][1] == 3
 assert allSorted[2][1] == 'bar'
 assert allSorted[3][1] == 'hate'
+
+
+def map = [
+    [ name : 'Zippy', age : 1 ],
+    [ name : 'B', age : 2 ],
+    [ name : 'A', age : 3 ],
+    [ name : 'D', age : 4 ],
+    [ name : 'z', age : 5 ]
+]
+
+assert map[0].name == 'Zippy'
+
+map.sort {
+    it.name
+}
+
+assert map[0].name == 'A'
+
+def r = map.sort {
+    it.name
+}.reverse()
+
+assert r[0].name == 'z'
