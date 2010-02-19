@@ -37,3 +37,15 @@ assert list[3] == 'Words'
 def packageName = 'org.bworks.bworksdb.Enrollio'
 def splitted = packageName.split("\\.")
 assert splitted[-1] == 'Enrollio'
+
+
+// split on lines
+def multiLineString = ''' header line
+data line
+'''
+def lines = multiLineString.split(/\n/)
+println lines
+
+
+// lic,nes.remove(0)
+// c,assert lines[0] == 'data line'
