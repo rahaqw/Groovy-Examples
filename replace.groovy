@@ -20,6 +20,3 @@ seen
 nothin'
 yet
 """
-
-
-println someParagraph.replace("\n", "<br />")
