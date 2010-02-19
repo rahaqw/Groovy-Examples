@@ -92,7 +92,7 @@ assert (foo =~ /\t/).count == 3
 def samplePass = "1abc2def3ghi"
 assert (samplePass =~ /\d/).count >= 3
 
-// Case IN sensitive
+// Case INsensitive
 def app = "foo man rock Star wanted for lame job"
 assert (app =~ /(?i)rock.*star/)
 
