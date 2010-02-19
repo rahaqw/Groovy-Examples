@@ -1,36 +1,45 @@
 #!/usr/bin/env groovy
-def ts = new XmlParser().parse(new File('TESTS-TestSuites.xml'))
+def ts = new XmlParser().parse(new File('target/test-reports/TESTS-TestSuites.xml'))
 
-def f1 = ts.testsuite.testcase.failure[0]
-def f1className = f1.parent().attribute('classname')
-assert f1className == 'MiscFunctionalTests'
-
-def msg = f1.attribute('message')
-assert msg == 'Expected HTTP status [200] but was [500]'
-
-def matcher = f1.text() =~ /\((${f1className}.*)\)/
-def fileNameWithErrorLine = matcher.find() ? matcher[0][1] : ''
-assert fileNameWithErrorLine == "MiscFunctionalTests.groovy:17"
-
-/*
-    assert className == 'MiscFunctionalTests'
-
-    def error = it.text()
-
-
-    def noFileNameFound = error =~ /\((somethingthatdoesntexist.*)\)/
-    def nothing = noFileNameFound.matches() ?  noFileNameFound[0][1] : "MiscFunctionalTests.groovy:17"
-    assert nothing == "MiscFunctionalTests.groovy:17"
+// Process two things: failures and errors
+ts.testsuite.testcase.failure.each { failure ->
+    processProblem(failure)
 }
-*/
-def f2 = ts.testsuite.testcase.failure[1]
-assert f2.attribute('message') == 'GC overhead limit exceeded'
 
-def f2className = f2.parent().attribute('classname') 
-assert f2className == 'SecurityFiltersFunctionalTests'
+ts.testsuite.testcase.error.each { err ->
+    processProblem(err)
+}
 
-matcher = f2.text() =~ /\((${f2className}.*)\)/
-fileNameWithErrorLine = matcher.find() ? matcher[0][1] : ''
-assert fileNameWithErrorLine == ""
+// errors and failures are both structured similarly in
+// the xml report.  Generalize both as a 'problem'
+def processProblem(problem) {
+    def className = problem.parent().attribute('classname') 
+
+    // remove package name from test.
+    def splitted = className.toString().split("\\.")
+    if (splitted.size()) {
+        className = splitted[-1]
+    }
+
+    // Get line number by finding (testName.groovy:lineNumber)
+    def matcher = problem.text() =~ /\((${className}.*)\)/
+    // If nothing's found in the text(), then just use className + '.groovy', plus a zero-line number
+    def fileNameWithErrorLine = matcher.find() ? matcher[0][1] : className + '.groovy:0'
 
 
+    // Get problem message.  
+    // Prepend the name of the test to it.
+    def msg = " : " + problem.parent().attribute('name') + " : "
+    // Sometimes the message is blank, so use 'type' attribute.
+    msg += problem.attribute('message') ?: problem.attribute('type') ?: ''
+
+    // Find this file in the dir. structure so we can get abs. path
+    def fullPath
+    new File("test").eachFileRecurse { f ->
+        if (f.name == className + '.groovy') {
+            fullPath = f.parent + '/' + fileNameWithErrorLine
+            return
+        }
+    }
+    println "${fullPath}:${msg}"
+}
