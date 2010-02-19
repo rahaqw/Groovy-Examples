@@ -46,3 +46,23 @@ assert urls7[0].clicks == 1
 
 assert urls7[1].url == "foo1"
 assert urls7[1].clicks == 0
+
+assert urls7[2].url == "foo2"
+assert urls7[2].clicks == 0
+
+assert urls7[6].url == "foo6"
+assert urls7[6].clicks == 0
+
+// each url will get at least 11
+// 8 clicks will be left over, so the first 8 will get 12
+def urls16 = resetUrls(16)
+assignUrls(urls16, 184)
+
+0.upto(7) {
+    assert urls16[it].url == "foo${it}"
+    assert urls16[it].clicks == 12
+}
+8.upto(urls16.size() - 1) {
+    assert urls16[it].url == "foo${it}"
+    assert urls16[it].clicks == 11
+}
