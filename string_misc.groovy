@@ -33,3 +33,7 @@ assert strChopped == "ThereShXouldNotBeAn"
 
 def s = '   boin  '
 assert s.trim() == 'boin'
+
+
+def someUrl = 'http://foo.bar.baz.quk'
+assert someUrl.startsWith('http://foo.bar')
