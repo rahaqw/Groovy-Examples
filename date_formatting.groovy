@@ -15,6 +15,8 @@ assert String.format('%tD', c) == '07/22/09' //date as '%tY-%tm-%td'
 assert String.format('%tT', c) == '16:20:21' //time as '%tH:%tM:%tS'
 assert String.format('%tR', c) == '16:20' //time as '%tH:%tM'
 assert String.format('%tr', c) == '04:20:21 PM' //time as '%tI:%tM:%tS %Tp'
+assert String.format('%tI:%<tM %<tp', c) == '04:20 pm'
+
 
 
 //date as YYYYMMDD 

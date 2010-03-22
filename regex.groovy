@@ -105,3 +105,6 @@ lame xml thing (whit:30)
 
 def matcher = xml =~ /\((.*)\)/
 assert matcher[0][1] == 'whit:30'
+
+assert "bar" =~ /ba(r|z)/
+assert "baz" =~ /ba(r|z)/
