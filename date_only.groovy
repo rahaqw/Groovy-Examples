@@ -1,10 +1,11 @@
-cal = Calendar.instance
-Y = cal.get(Calendar.YEAR)
-M = cal.get(Calendar.MONTH) + 1
-D = cal.get(Calendar.DATE)
-println "The current date is $Y $M $D"
+// TOTAL HACK  TOTAL HACK I HATE GROOVY
+def cal = Calendar.instance
+def Y = cal.get(Calendar.YEAR) - 1900
+def M = cal.get(Calendar.MONTH)
+def D = cal.get(Calendar.DAY_OF_MONTH)
 
-date = cal.date
-
-
-
+println "Year = " + Y
+println "Month" + M
+println "Day" + D
+def today = new Date(Y, M, D)
+println " the first thingy today is: " + today

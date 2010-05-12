@@ -1,22 +1,12 @@
 #!/usr/bin/env groovy
-println "Hello Groovy"
- 
-println "Hello Hello Groovy"
-if (mycondition) {
-    Your code
-}
-if (mycondigion) {
-    // body...
-}
 
-def method_name(params...) {
-    // some code
+class Student {
+    static 
+    String firstName
 }
 
 
+def bob = new Foo();
+bob.firstName = 'bob'
+println bob.firstName
 
-if (this condition) {
-    Your mom
-} else {
-   kiss my keyster. 
-}

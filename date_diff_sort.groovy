@@ -39,19 +39,14 @@ println "Closest PAST date, unless today"
 // def noTime = today.clone()
 // today.clearTime()
 // noTime.clearTime()
-sortedDates = dates.sort { date1, date2 ->
+sortedDates = dates.sort { foo, bar ->
 
-    if (date1 == date2) return 0
-    if (date1 == today) return -1
-    if (date2 == today) return 1
+        def fooScore = today - foo
+        if (fooScore < 0) fooScore *= -100000
+        def barScore = today - bar
+        if (barScore < 0) barScore *= -100000
 
-    def date1Factor = today - date1
-    date1Factor = date1Factor > 0 ? date1Factor : date1Factor * -100000
-    def date2Factor = today - date2
-    date2Factor = date2Factor > 0 ? date2Factor : date2Factor * -100000
-
-    def result = date1Factor <=> date2Factor
-    return result
+        return fooScore <=> barScore
 }
 
 sortedDates.each {
