@@ -13,3 +13,9 @@ assert lst[1] == 'quk'
 lst.add('last item')
 assert lst[-1] == 'last item'
 assert lst[-2] == 'baz'
+
+
+def l = [ 1, 2, 3]
+assert l.pop() == 3
+assert l.pop() == 2, 'second pop should be 2'
+assert l.pop() == 1, 'Only 1 should be left'
