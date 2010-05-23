@@ -19,3 +19,11 @@ def l = [ 1, 2, 3]
 assert l.pop() == 3
 assert l.pop() == 2, 'second pop should be 2'
 assert l.pop() == 1, 'Only 1 should be left'
+
+
+def s = "doodie/bird/blather"
+l = s.split("/").toList()
+
+assert l.pop() == 'blather'
+assert l.pop() == 'bird'
+assert l.pop() == 'doodie'
