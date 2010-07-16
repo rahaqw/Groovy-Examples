@@ -19,3 +19,8 @@ assert newList[1] == 'is'
 assert newList[2] == 'a'
 assert newList[3] == 'Test'
 
+
+def bobsgroups = [ 1, 2, 3, 4, 5]
+def billsAnswers = [ 4, 5, 6 ]
+
+assert bobsgroups.findAll { it in billsAnswers } == [ 4, 5 ]
