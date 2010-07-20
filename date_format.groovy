@@ -17,3 +17,4 @@ println String.format("%tI",date1)
 // difference betweeen %l and %I
 assert String.format('%tl', date1) == '7'
 assert String.format('%tI', date1) == '07'
+assert date1.format('yyyy_MM_dd') == '1981_06_15'
