@@ -27,3 +27,14 @@ l = s.split("/").toList()
 assert l.pop() == 'blather'
 assert l.pop() == 'bird'
 assert l.pop() == 'doodie'
+
+
+def searchTerms = []
+searchTerms.add([fieldName:'foo', fieldValue:'bar'])
+assert searchTerms.size() == 1
+
+def something = searchTerms.find { it.fieldName == 'foo' }
+println something.getClass().getName()
+println something
+
+searchTerms = []

@@ -7,3 +7,8 @@ def myRecord = [  firstName : 'Nate',
 
 assert 'Nate' == myRecord['firstName']
 assert 'java.util.LinkedHashMap' == myRecord.getClass().getName()
+
+// Added some method
+def methodFoo() {
+    println "Help"
+}
