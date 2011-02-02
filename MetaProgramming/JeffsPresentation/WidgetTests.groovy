@@ -13,10 +13,14 @@ class WidgetTests extends GroovyTestCase {
         def w = new Widget()
         assertNotNull w
         println w.boo()
+        println w.goodbye()
         println w.boo()
         println w.boo()
+        println w.goodbye()
         println w.boo()
         println w.boo()
+        println w.goodbye()
+        println w.goodbye()
 
     }
 }
