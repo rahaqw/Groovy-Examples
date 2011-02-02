@@ -10,4 +10,11 @@ class ExpandoLite {
         dynamicProperties[name]
     }
 
+    def methodMissing(String methodName, args) {
+        def prop = dynamicProperties[methodName]
+        if (prop && prop instanceof Closure) {
+            return prop.call(*args)
+        }
+    }
+
 }
