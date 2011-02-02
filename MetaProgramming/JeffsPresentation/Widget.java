@@ -1,2 +1,2 @@
-class Widget {
+public class Widget {
 }
