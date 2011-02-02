@@ -1,8 +1,13 @@
 class ExpandoLite {
 
-    String somePropertyThatHoldsAStatusMessage
+    private dynamicProperties = [:]
+
     void setProperty(String name, value) {
-        somePropertyThatHoldsAStatusMessage = "${name} : ${value}"
+        dynamicProperties[name] = value
+    }
+
+    def getProperty(String name) {
+        dynamicProperties[name]
     }
 
 }
