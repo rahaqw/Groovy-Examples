@@ -96,6 +96,12 @@ assert (samplePass =~ /\d/).count >= 3
 def app = "foo man rock Star wanted for lame job"
 assert (app =~ /(?i)rock.*star/)
 
+// Wildcard .* matching
+assert ("foob" =~ /f.*b/)
+assert ("fob" =~ /f.b/)
+assert !("foob" =~ /f.b/)
+
+
 // Match some parenthesis
 def xml = """
 <some>
