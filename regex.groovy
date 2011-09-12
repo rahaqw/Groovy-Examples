@@ -114,3 +114,9 @@ assert matcher[0][1] == 'whit:30'
 
 assert "bar" =~ /ba(r|z)/
 assert "baz" =~ /ba(r|z)/
+
+// regex with ternary operator
+def state = "WY"
+assert "WY" == (state =~ /U.S./ ? "US" : state)
+state = "U.S. Senate"
+assert "US" == (state =~ /U.S./ ? "US" : state)
