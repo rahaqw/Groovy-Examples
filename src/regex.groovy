@@ -120,3 +120,9 @@ def state = "WY"
 assert "WY" == (state =~ /U.S./ ? "US" : state)
 state = "U.S. Senate"
 assert "US" == (state =~ /U.S./ ? "US" : state)
+
+// regex word boundary
+assert "bar" =~ /bar\b/
+assert "bar bados" =~ /bar\b/
+assert "bar!" =~ /bar\b/
+assert !("barrbas" =~ /bar\b/)
