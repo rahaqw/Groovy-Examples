@@ -3,6 +3,7 @@
 // you to pass the result of each iteration to the next
 // iteration.
 // http://groovy.codehaus.org/Quick+Start
+// see also createHashmapFromList.groovy
 
 def tagList = [
     

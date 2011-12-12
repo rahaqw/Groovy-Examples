@@ -6,17 +6,20 @@ def record1 = [
     lastName : 'smith',
     zipcode : '22222'
 ]
+
 def record2 = [
     phone : '976-EVIL',
     zipcode : '11111']
 
-
-
-// record2.each { key, value ->
-//     record1[key] = value
-// }
-
 record1 += record2
+
+// Assert that record2's fields were added to record1
+// Also assert that zipcode (default) was replaced by record2's zipcode
+assert record1.phone == '976-EVIL'
+assert record1.zipcode == '11111'
+assert record1.firstName == 'barn'
+
+myMap = [freature:'Clusres', version:'1.1']
 
 // Print firstName and zipcode from this record.
 def outputFields = [ 'firstName', 'zipcode' ]
@@ -25,16 +28,10 @@ println outputFields.collect {
     record1[it]
 }.join("\n")
 
-// Assert that record2's fields were added to record1
-assert record1.phone == '976-EVIL'
-assert record1.zipcode == '11111'
-assert record1.firstName == 'barn'
-
-myMap = [freature:'Clusres', version:'1.1']
-
 
 myList = []
 
+// condense
 one = [name:'Fred']
 myList << one
 two = [name:'Wilma']
@@ -43,27 +40,21 @@ myList << two
 myList.each { thing ->
     println thing.name
 	println thing['name']
-
 }
 
 
 def epList = []
 
 def email = [
-    from:'Fred',
-    subject:'Eat',
-    date:'Yo'
-]
-
-email = [
     from:'Barney',
     subject:'Drink',
-    date:''
+    date:'Boink'
 ]
 
 // When two args are defined, they're key/value
 email.each { key, value ->
-    println "${key}, ${value}"
+    assert ["from", "subject", "date"].find { it == key }
+    assert ["Barney", "Drink", 'Boink'].find { it == value }
 }
 
 
