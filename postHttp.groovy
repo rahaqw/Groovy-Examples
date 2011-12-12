@@ -1,4 +1,4 @@
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.5.1' )
+import org.apache.http.*
 import groovyx.net.http.HTTPBuilder
 import static groovyx.net.http.ContentType.URLENC
 
